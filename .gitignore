@@ -1,0 +1,6 @@
+SDL.framework
+SDL.framework/*
+SDLMain.h
+SDLMain.m
+*.xcodeproj
+*.1
