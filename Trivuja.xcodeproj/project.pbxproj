@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		229099C21713216B00B62419 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 229099C11713216B00B62419 /* main.cpp */; };
 		229099C41713216B00B62419 /* Trivuja.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 229099C31713216B00B62419 /* Trivuja.1 */; };
+		229099CB1713219D00B62419 /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229099CA1713219D00B62419 /* SDL.framework */; };
+		229099CE1713227500B62419 /* SDLMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 229099CD171321DF00B62419 /* SDLMain.m */; };
+		229099D0171322A800B62419 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229099CF171322A800B62419 /* Foundation.framework */; };
+		229099D2171322B400B62419 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229099D1171322B400B62419 /* Cocoa.framework */; };
+		229099D517132C1300B62419 /* CSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 229099D317132C1300B62419 /* CSprite.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,8 +31,15 @@
 
 /* Begin PBXFileReference section */
 		229099BE1713216B00B62419 /* Trivuja */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Trivuja; sourceTree = BUILT_PRODUCTS_DIR; };
-		229099C11713216B00B62419 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		229099C11713216B00B62419 /* main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = main.cpp; sourceTree = "<group>"; };
 		229099C31713216B00B62419 /* Trivuja.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Trivuja.1; sourceTree = "<group>"; };
+		229099CA1713219D00B62419 /* SDL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDL.framework; sourceTree = "<group>"; };
+		229099CC171321DF00B62419 /* SDLMain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SDLMain.h; sourceTree = "<group>"; };
+		229099CD171321DF00B62419 /* SDLMain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SDLMain.m; sourceTree = "<group>"; };
+		229099CF171322A800B62419 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		229099D1171322B400B62419 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		229099D317132C1300B62419 /* CSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSprite.cpp; sourceTree = "<group>"; };
+		229099D417132C1300B62419 /* CSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSprite.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +47,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				229099D2171322B400B62419 /* Cocoa.framework in Frameworks */,
+				229099D0171322A800B62419 /* Foundation.framework in Frameworks */,
+				229099CB1713219D00B62419 /* SDL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,8 +59,13 @@
 		229099B51713216B00B62419 = {
 			isa = PBXGroup;
 			children = (
+				229099D1171322B400B62419 /* Cocoa.framework */,
+				229099CF171322A800B62419 /* Foundation.framework */,
+				229099CC171321DF00B62419 /* SDLMain.h */,
+				229099CD171321DF00B62419 /* SDLMain.m */,
 				229099C01713216B00B62419 /* Trivuja */,
 				229099BF1713216B00B62419 /* Products */,
+				229099CA1713219D00B62419 /* SDL.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,6 +82,8 @@
 			children = (
 				229099C11713216B00B62419 /* main.cpp */,
 				229099C31713216B00B62419 /* Trivuja.1 */,
+				229099D317132C1300B62419 /* CSprite.cpp */,
+				229099D417132C1300B62419 /* CSprite.h */,
 			);
 			path = Trivuja;
 			sourceTree = "<group>";
@@ -117,7 +139,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				229099CE1713227500B62419 /* SDLMain.m in Sources */,
 				229099C21713216B00B62419 /* main.cpp in Sources */,
+				229099D517132C1300B62419 /* CSprite.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +208,10 @@
 		229099C81713216B00B62419 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -191,6 +219,10 @@
 		229099C91713216B00B62419 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
