@@ -12,6 +12,11 @@
 
 using namespace std;
 
+SDL_Event event;
+Uint8 *keys;
+SDL_Surface *screen;
+SDL_Rect rectangulo;
+
 int main(int argc, char** argv)
 {
     if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_JOYSTICK) < 0) {

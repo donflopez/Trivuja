@@ -58,5 +58,5 @@ void CSprite::delLatest(SDL_Surface *surface) {
     rect.y=this->gety();
     rect.h=this->geth();
     rect.w=this->getw();
-    SDL_FillRect(surface, &rect, SDL_MapRGB(screen->format,0,0,0));
+    SDL_FillRect(surface, &rect, SDL_MapRGB(surface->format,0,0,0));
 }
