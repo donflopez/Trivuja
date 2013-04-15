@@ -14,6 +14,7 @@
 		229099D0171322A800B62419 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229099CF171322A800B62419 /* Foundation.framework */; };
 		229099D2171322B400B62419 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229099D1171322B400B62419 /* Cocoa.framework */; };
 		229099D517132C1300B62419 /* CSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 229099D317132C1300B62419 /* CSprite.cpp */; };
+		229099DA171C60E500B62419 /* Engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 229099D9171C60E500B62419 /* Engine.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,6 +41,10 @@
 		229099D1171322B400B62419 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		229099D317132C1300B62419 /* CSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSprite.cpp; sourceTree = "<group>"; };
 		229099D417132C1300B62419 /* CSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSprite.h; sourceTree = "<group>"; };
+		229099D6171C57D300B62419 /* Board.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Board.h; sourceTree = "<group>"; };
+		229099D7171C581100B62419 /* Casilla.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Casilla.h; sourceTree = "<group>"; };
+		229099D8171C5FCF00B62419 /* Engine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Engine.h; sourceTree = "<group>"; };
+		229099D9171C60E500B62419 /* Engine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Engine.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +89,10 @@
 				229099C31713216B00B62419 /* Trivuja.1 */,
 				229099D317132C1300B62419 /* CSprite.cpp */,
 				229099D417132C1300B62419 /* CSprite.h */,
+				229099D6171C57D300B62419 /* Board.h */,
+				229099D7171C581100B62419 /* Casilla.h */,
+				229099D8171C5FCF00B62419 /* Engine.h */,
+				229099D9171C60E500B62419 /* Engine.cpp */,
 			);
 			path = Trivuja;
 			sourceTree = "<group>";
@@ -142,6 +151,7 @@
 				229099CE1713227500B62419 /* SDLMain.m in Sources */,
 				229099C21713216B00B62419 /* main.cpp in Sources */,
 				229099D517132C1300B62419 /* CSprite.cpp in Sources */,
+				229099DA171C60E500B62419 /* Engine.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

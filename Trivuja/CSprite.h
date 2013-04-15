@@ -41,6 +41,7 @@ public:
     int geth() {return sprite[frame].img->h;}
     void draw(SDL_Surface *superficie);
     int colision(CSprite sp);
+    void delLatest(SDL_Surface *superfice);
 };
 
 #endif /* defined(__Trivuja__CSprite__) */

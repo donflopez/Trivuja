@@ -25,25 +25,38 @@ CSprite::CSprite(int nf) {
     nFrames=nf;
     count=0;
 }
+
 CSprite::CSprite() {
     int nf=1;
     sprite=new CFrame[nf];
     nFrames=nf;
     count=0;
 }
+
 void CSprite::finalize() {
     int i;
     for (i=0 ; i<=nFrames-1 ; i++)
         sprite[i].unload();
 }
+
 void CSprite::addFrame(CFrame frame) {
     if (count<nFrames) {
         sprite[count]=frame;
         count++;
     }
 }
+
 void CSprite::selFrame(int nf) {
     if (nf<=nFrames) { 
         frame=nf; 
     } 
+}
+
+void CSprite::delLatest(SDL_Surface *surface) {
+    SDL_Rect rect;
+    rect.x=this->getx();
+    rect.y=this->gety();
+    rect.h=this->geth();
+    rect.w=this->getw();
+    SDL_FillRect(surface, &rect, SDL_MapRGB(screen->format,0,0,0));
 }

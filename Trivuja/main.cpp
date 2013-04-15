@@ -10,27 +10,19 @@
 #include <SDL/SDL.h>
 #include "SDLmain.h"
 
-struct prueba {
-    int uno;
-    int dos;
-    int tres;
-};
-
 using namespace std;
 
 int main(int argc, char** argv)
 {
-    prueba v[10];
-    
-    v[0].uno=34;
-    
-    cout<<v[0].uno<<endl;
-    
-    SDL_Init(SDL_INIT_EVERYTHING);
-    
-    SDL_SetVideoMode(640, 480, 32, SDL_DOUBLEBUF);
-    
-    SDL_Event event;
+    if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_JOYSTICK) < 0) {
+        printf("No se pudo iniciar SDL: %s\n",SDL_GetError());
+        return 1;
+    }
+    screen = SDL_SetVideoMode(640,480,24,SDL_HWSURFACE);
+    if (screen == NULL) {
+        printf("No se puede inicializar el modo gráfico: \n",SDL_GetError());
+        return 1; 
+    } 
     bool isRunning = true;
     
     while (isRunning) {
