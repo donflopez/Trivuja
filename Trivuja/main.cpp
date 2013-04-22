@@ -27,7 +27,7 @@ int main(int argc, char** argv)
     }
     screen = SDL_SetVideoMode(640,480,24,SDL_HWSURFACE);
     if (screen == NULL) {
-        printf("No se puede inicializar el modo gráfico: \n",SDL_GetError());
+        cout << "No se puede inicializar el modo gráfico: \n" << SDL_GetError();
         return 1; 
     } 
     

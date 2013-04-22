@@ -10,15 +10,15 @@
 #include "Board.h"
 
 Board::Board(){
-    CFrame *board;
-    board->load("./images/board.bmp");
-    this->addFrame(*board);
+    CFrame brd;
+    brd.load("/Users/donflopez/Downloads/board.bmp");
+    this->addFrame(brd);
     this->setx(0);
     this->sety(0);
 }
 
 void Board::setBoard(char *path){
-    CFrame *board;
-    board->load(path);
+    CFrame board;
+    board.load(path);
 }
 

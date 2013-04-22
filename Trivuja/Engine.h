@@ -16,14 +16,14 @@
 
 class Engine {
 private:
-    Board board;
+    Board b;
     SDL_Event event;
     Uint8 *keys;
     SDL_Surface *screen;
     SDL_Rect rectangulo;
 public:
     Engine();
-    Engine(SDL_Surface *screen):screen(screen){board.draw(this->screen);};
+    Engine(SDL_Surface *screen):screen(screen){b.draw(this->screen);};
     void drawScene();
     
 };
