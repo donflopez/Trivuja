@@ -17,6 +17,15 @@ Board::Board(){
     this->sety(0);
 }
 
+Board::Board(char *path){
+    CFrame brd;
+    brd.load(path);
+    this->addFrame(brd);
+    this->setx(0);
+    this->sety(0);
+
+}
+
 void Board::setBoard(char *path){
     CFrame board;
     board.load(path);
