@@ -32,6 +32,9 @@ int main(int argc, char** argv)
     } 
     
     eng = new Engine(screen);
+    
+    SDL_Flip(screen);
+    
     bool isRunning = true;
     
     while (isRunning) {
