@@ -19,6 +19,6 @@ public:
     Casilla(int type, bool selected, char* path);
     Casilla(int type, bool selected);
     void setType(int type);
-}
+};
 
 #endif

@@ -9,6 +9,7 @@
 #include <iostream>
 #include <SDL/SDL.h>
 #include "SDLmain.h"
+#include "Engine.h"
 
 using namespace std;
 
@@ -16,6 +17,7 @@ SDL_Event event;
 Uint8 *keys;
 SDL_Surface *screen;
 SDL_Rect rectangulo;
+Engine *eng;
 
 int main(int argc, char** argv)
 {
@@ -28,6 +30,8 @@ int main(int argc, char** argv)
         printf("No se puede inicializar el modo gráfico: \n",SDL_GetError());
         return 1; 
     } 
+    
+    eng = new Engine(screen);
     bool isRunning = true;
     
     while (isRunning) {

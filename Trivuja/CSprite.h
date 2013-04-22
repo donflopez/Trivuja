@@ -9,6 +9,8 @@
 #ifndef __Trivuja__CSprite__
 #define __Trivuja__CSprite__
 
+#include <SDL/SDL.h>
+
 class CFrame {
 public:
     SDL_Surface *img;
