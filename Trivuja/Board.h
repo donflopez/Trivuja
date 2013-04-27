@@ -11,7 +11,7 @@
 
 class Board {
 private:
-    Casilla* casillas[35];
+    Casilla* casillas[36];
 }
 
 #endif
