@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		223A3D4B172C27C5007B635E /* QandA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 223A3D4A172C27C5007B635E /* QandA.cpp */; };
+		223A3D4E172C2F1E007B635E /* QuestionEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 223A3D4D172C2F1E007B635E /* QuestionEngine.cpp */; };
 		229099C21713216B00B62419 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 229099C11713216B00B62419 /* main.cpp */; };
 		229099C41713216B00B62419 /* Trivuja.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 229099C31713216B00B62419 /* Trivuja.1 */; };
 		229099CB1713219D00B62419 /* SDL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 229099CA1713219D00B62419 /* SDL.framework */; };
@@ -32,6 +34,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		223A3D49172C27B5007B635E /* QandA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QandA.h; sourceTree = "<group>"; };
+		223A3D4A172C27C5007B635E /* QandA.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QandA.cpp; sourceTree = "<group>"; };
+		223A3D4C172C2C91007B635E /* QuestionEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionEngine.h; sourceTree = "<group>"; };
+		223A3D4D172C2F1E007B635E /* QuestionEngine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QuestionEngine.cpp; sourceTree = "<group>"; };
 		229099BE1713216B00B62419 /* Trivuja */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Trivuja; sourceTree = BUILT_PRODUCTS_DIR; };
 		229099C11713216B00B62419 /* main.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = main.cpp; sourceTree = "<group>"; };
 		229099C31713216B00B62419 /* Trivuja.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Trivuja.1; sourceTree = "<group>"; };
@@ -98,6 +104,10 @@
 				229099D7171C581100B62419 /* Casilla.h */,
 				229099D8171C5FCF00B62419 /* Engine.h */,
 				229099D9171C60E500B62419 /* Engine.cpp */,
+				223A3D49172C27B5007B635E /* QandA.h */,
+				223A3D4A172C27C5007B635E /* QandA.cpp */,
+				223A3D4C172C2C91007B635E /* QuestionEngine.h */,
+				223A3D4D172C2F1E007B635E /* QuestionEngine.cpp */,
 			);
 			path = Trivuja;
 			sourceTree = "<group>";
@@ -166,6 +176,8 @@
 				229099D517132C1300B62419 /* CSprite.cpp in Sources */,
 				229099DA171C60E500B62419 /* Engine.cpp in Sources */,
 				22BF585E172531440026EB65 /* Board.cpp in Sources */,
+				223A3D4B172C27C5007B635E /* QandA.cpp in Sources */,
+				223A3D4E172C2F1E007B635E /* QuestionEngine.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
