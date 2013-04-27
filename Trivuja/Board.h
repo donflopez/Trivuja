@@ -19,7 +19,6 @@ public:
     Board();
     Board(char *path);
     void setBoard(char* path);
-    
 };
 
 #endif

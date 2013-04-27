@@ -14,11 +14,11 @@
 class QuestionEngine {
 private:
     //TODO: Load dinamically QandA
-    QandA questions[5][20];
-    int latest[2];
+    //QandA questions[5][20];
+    //int latest[2];
 public:
     QuestionEngine();
-QandA getQuestion(int type);
+//QandA getQuestion(int type);
 };
 
 #endif

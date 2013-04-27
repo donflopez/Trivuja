@@ -20,3 +20,7 @@ Engine::Engine() {
     b.draw(screen);
 }
 
+Engine::~Engine(){
+    b.~Board();
+    this->screen->SDL_Surface::~SDL_Surface();
+}

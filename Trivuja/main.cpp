@@ -46,6 +46,9 @@ int main(int argc, char** argv)
     }
     
     SDL_Quit();
+    
+    eng->~Engine();
+    delete eng;
     return 0;
 }
 

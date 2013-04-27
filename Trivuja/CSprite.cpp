@@ -66,4 +66,4 @@ void CSprite::draw(SDL_Surface *superficie) {
     dest.x=xpos; 
     dest.y=ypos; 
     SDL_BlitSurface(sprite[frame].img,NULL,superficie,&dest);
-} 
+}

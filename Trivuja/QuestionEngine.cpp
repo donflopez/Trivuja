@@ -14,7 +14,7 @@
 QuestionEngine::QuestionEngine(){
     ifstream file;
     string line;
-    
+    std::cout << "Constructor de QuestionEngine" << std::endl;
     file.open("/Users/donflopez/Downloads/preguntas.tjData");
     if(file.good()){
         while (file.eof()!=true) {
@@ -22,8 +22,14 @@ QuestionEngine::QuestionEngine(){
             std::cout << "Pregunta: " << line << std::endl;
         }
     }
+    
+    /*for (int i=0; i<5; i++) {
+        for (int j=0; j<20; j++) {
+            questions[i][j]=new QandA();
+        }
+    }*/
 }
 
-QandA QuestionEngine::getQuestion(int type){
-    return questions[type][rand()%20];
-}
+//QandA QuestionEngine::getQuestion(int type){
+//    return questions[type][rand()%20];
+//}
