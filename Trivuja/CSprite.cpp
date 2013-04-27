@@ -60,3 +60,10 @@ void CSprite::delLatest(SDL_Surface *surface) {
     rect.w=this->getw();
     SDL_FillRect(surface, &rect, SDL_MapRGB(surface->format,0,0,0));
 }
+
+void CSprite::draw(SDL_Surface *superficie) { 
+    SDL_Rect dest; 
+    dest.x=xpos; 
+    dest.y=ypos; 
+    SDL_BlitSurface(sprite[frame].img,NULL,superficie,&dest);
+} 
