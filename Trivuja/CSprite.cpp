@@ -9,7 +9,7 @@
 #include <SDL/SDL.h>
 #include "CSprite.h"
 
-void CFrame::load(char *path) {
+void CFrame::load(const char *path) {
     img=SDL_LoadBMP(path);
     // Asignamos el color transparente al color rojo.
     SDL_SetColorKey(img,SDL_SRCCOLORKEY|SDL_RLEACCEL, SDL_MapRGB(img->format,255,0,0));
@@ -65,5 +65,5 @@ void CSprite::draw(SDL_Surface *superficie) {
     SDL_Rect dest; 
     dest.x=xpos; 
     dest.y=ypos; 
-    SDL_BlitSurface(sprite[frame].img,NULL,superficie,&dest);
+    SDL_BlitSurface(sprite[frame].img,NULL,superficie,&ddest);
 } 

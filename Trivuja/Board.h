@@ -13,7 +13,7 @@
 
 class Board: public CSprite{
 private:
-    Casilla* casillas[35];
+    //Casilla* casillas[35];
     
 public:
     Board();

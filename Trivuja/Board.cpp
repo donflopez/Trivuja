@@ -6,12 +6,12 @@
 //  Copyright (c) 2013 Francisco López Liébana. All rights reserved.
 //
 
-#include <iostream>
 #include "Board.h"
 
 Board::Board(){
     CFrame brd;
-    brd.load("/Users/donflopez/Downloads/board.bmp");
+    const char *path= "/Users/donflopez/Downloads/board.bmp";
+    brd.load(path);
     this->addFrame(brd);
     this->setx(0);
     this->sety(0);

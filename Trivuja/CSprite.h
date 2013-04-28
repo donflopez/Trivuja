@@ -14,7 +14,7 @@
 class CFrame {
 public:
     SDL_Surface *img;
-    void load(char *path);
+    void load(const char *path);
     void unload();
 };
 
