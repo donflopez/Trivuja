@@ -1,4 +1,4 @@
-//
+ //
 //  CSprite.cpp
 //  Trivuja
 //
@@ -10,10 +10,12 @@
 #include "CSprite.h"
 
 void CFrame::load(const char *path) {
-    img=SDL_LoadBMP(path);
+    SDL_Surface *image;
+    image = SDL_LoadBMP(path);
     // Asignamos el color transparente al color rojo.
-    SDL_SetColorKey(img,SDL_SRCCOLORKEY|SDL_RLEACCEL, SDL_MapRGB(img->format,255,0,0));
-    img=SDL_DisplayFormat(img);
+    SDL_SetColorKey(image,SDL_SRCCOLORKEY|SDL_RLEACCEL, SDL_MapRGB(image->format,255,0,0));
+    img=SDL_DisplayFormat(image);
+    SDL_FreeSurface(image);
 }
 
 void CFrame::unload(){
@@ -62,8 +64,8 @@ void CSprite::delLatest(SDL_Surface *surface) {
 }
 
 void CSprite::draw(SDL_Surface *superficie) { 
-    SDL_Rect dest; 
+    SDL_Rect dest;
     dest.x=xpos; 
-    dest.y=ypos; 
-    SDL_BlitSurface(sprite[frame].img,NULL,superficie,&ddest);
+    dest.y=ypos;
+    SDL_BlitSurface(sprite[frame].img,NULL,superficie,&dest);
 } 

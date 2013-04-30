@@ -13,11 +13,16 @@
 
 using namespace std;
 
+#define FPS 40
+
 SDL_Event event;
 Uint8 *keys;
 SDL_Surface *screen;
 SDL_Rect rectangulo;
 Engine *eng;
+Uint32 waittime = 1000.0f/FPS;
+Uint32 framestarttime = 0;
+Sint32 delaytime;
 
 int main(int argc, char** argv)
 {
@@ -29,7 +34,7 @@ int main(int argc, char** argv)
     if (screen == NULL) {
         cout << "No se puede inicializar el modo gráfico: \n" << SDL_GetError();
         return 1; 
-    } 
+    }
     
     eng = new Engine(screen);
     
@@ -46,6 +51,9 @@ int main(int argc, char** argv)
     }
     
     SDL_Quit();
+    
+    eng->~Engine();
+    delete eng;
     return 0;
 }
 

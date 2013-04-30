@@ -11,14 +11,19 @@
 #ifndef Trivuja_Casilla_h
 #define Trivuja_Casilla_h
 
-class Casilla: public CSprite {
+class Casilla {
 private:
+    Uint32 color[2];
+    SDL_PixelFormat* format;
+    SDL_Rect rect;
     int type;
-    bool selected;
+    int selected;
 public:
-    Casilla(int type, bool selected, char* path);
-    Casilla(int type, bool selected);
-    void setType(int type);
+    Casilla(int type, const SDL_PixelFormat* format, int x, int y);
+    int getType(){return type;};
+    void select(){selected=1;};
+    void deselect(){selected=0;};
+    void draw(SDL_Surface *screen);
 };
 
 #endif

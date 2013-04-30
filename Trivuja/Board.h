@@ -13,13 +13,14 @@
 
 class Board: public CSprite{
 private:
-    //Casilla* casillas[35];
+    CFrame brd;
+    Casilla *casillas[36];
     
 public:
-    Board();
-    Board(char *path);
+    Board(const SDL_PixelFormat* format);
+    Board(char *path, const SDL_PixelFormat* format);
     void setBoard(char* path);
-    
+    void drawCasillas(SDL_Surface *screen);
 };
 
 #endif
