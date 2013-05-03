@@ -11,26 +11,24 @@
 #include "Engine.h"
 #include "Board.h"
 
-Engine::Engine():keys(NULL) {
-    this->screen = SDL_SetVideoMode(640, 480, 24, SDL_HWSURFACE);
-    if (screen == NULL){
-        std::cout << "No se puede inicializar el modo gráfico: " << SDL_GetError() << std::endl;
-    }
-    else {
-        b = new Board(this->screen->format);
-        b->draw(screen);
-
-    }
-}
-
 Engine::Engine(SDL_Surface *screen):keys(NULL){
     b = new Board(screen->format);
-    this->screen=screen;
-    b->draw(this->screen);
-    b->drawCasillas(this->screen);
+    alphaSurface = SDL_CreateRGBSurface(SDL_HWSURFACE, 640, 480, screen->format->BitsPerPixel, 0, 0, 0, 0);
+    transparent.x=0;
+    transparent.y=0;
+    transparent.w=640;
+    transparent.h=480;
+    b->draw(screen);
+    b->drawCasillas(screen);
+}
+
+void Engine::drawQuestion(int tQuest, SDL_Surface *screen){
+    SDL_SetAlpha(alphaSurface, SDL_SRCALPHA, 180);
+    SDL_BlitSurface(alphaSurface, NULL, screen, &transparent);
+    questions.draw(tQuest, screen);
 }
 
 Engine::~Engine(){
     b->~Board();
-    this->screen->SDL_Surface::~SDL_Surface();
+    questions.~QuestionEngine();
 }

@@ -25,6 +25,7 @@ void CFrame::unload(){
 CSprite::CSprite(int nf) {
     sprite=new CFrame[nf];
     nFrames=nf;
+    frame=0;
     count=0;
 }
 
@@ -32,6 +33,7 @@ CSprite::CSprite() {
     int nf=1;
     sprite=new CFrame[nf];
     nFrames=nf;
+    frame=0;
     count=0;
 }
 

@@ -20,13 +20,13 @@ private:
     Board *b;
     SDL_Event event;
     Uint8 *keys;
-    SDL_Surface *screen;
-    SDL_Rect rectangulo;
+    SDL_Surface *alphaSurface;
+    SDL_Rect rectangulo, transparent;
     QuestionEngine questions;
 public:
-    Engine();
     Engine(SDL_Surface *screen);
     void drawScene();
+    void drawQuestion(int tQuest, SDL_Surface *screen);
     ~Engine();
 };
 

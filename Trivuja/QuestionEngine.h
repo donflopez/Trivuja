@@ -10,15 +10,23 @@
 #define Trivuja_QuestionEngine_h
 
 #include "QandA.h"
+#include <SDL/SDL.h>
+#include <SDL_ttf/SDL_ttf.h>
 
 class QuestionEngine {
 private:
+    SDL_Color bgcolor, qfcolor, afcolor;
+    SDL_Rect rect[4];
+    SDL_Surface *sFont;
+    TTF_Font *font;
     //TODO: Load dinamically QandA
     QandA* questions[5][20];
     //int latest[2];
 public:
     QuestionEngine();
 //QandA getQuestion(int type);
+    void draw(int type, SDL_Surface *screen);
+    ~QuestionEngine();
 };
 
 #endif
