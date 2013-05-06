@@ -11,6 +11,7 @@
 #include <fstream>
 #include <iostream>
 
+
 QuestionEngine::QuestionEngine(){
     //Setting font colors
     //Background
@@ -27,7 +28,7 @@ QuestionEngine::QuestionEngine(){
     afcolor.b=255;
     
     for (int i=0; i<4; i++) {
-        rect[i].y = 20+(i*50);
+        rect[i].y = 20+(i*100);
         rect[i].x = (i==0) ? 20 : 50;
         rect[i].w = (i==0) ? 500 : 470;
     }
@@ -75,25 +76,65 @@ QuestionEngine::QuestionEngine(){
 //    return questions[type][rand()%20];
 //}
 
+void adaptText(TTF_Font *font,char* text, SDL_Surface *sFont, SDL_Rect rect, SDL_Color color, SDL_Surface *screen) {
+    int w=0, h=0, nLines=0, nChar=0;
+    string s(text), aux;
+    TTF_SizeText(font, text, &w, &h);
+    nLines=w/600;
+    nLines++;
+    if (w>600) {
+        nChar=s.length()/nLines;
+        for (int i=0; i<nLines; i++) {
+            aux=s.substr(i*nChar, nChar*(i+1));
+            sFont = TTF_RenderUTF8_Blended(font,(char*) aux.c_str(), color);
+            if(i!=0)
+                rect.y=rect.y+(i*h);
+                std::cout << "Altura" << w <<std::endl;
+            SDL_SetColorKey(sFont,SDL_SRCCOLORKEY|SDL_RLEACCEL, SDL_MapRGB(sFont->format,255,0,0));
+            SDL_BlitSurface(sFont, NULL, screen, &rect);
+            SDL_FreeSurface(sFont);
+        }
+    }
+    else{
+        sFont = TTF_RenderUTF8_Blended(font, text, color);
+        SDL_SetColorKey(sFont,SDL_SRCCOLORKEY|SDL_RLEACCEL, SDL_MapRGB(sFont->format,255,0,0));
+        SDL_BlitSurface(sFont, NULL, screen, &rect);
+        SDL_FreeSurface(sFont);
+    }
+}
+
 void QuestionEngine::draw(int type, SDL_Surface *screen){
-    int qNumber = rand()%20;
-    char* question = new char[questions[type][qNumber]->getQuestion().length()+1];
+    int qNumber = rand()%20, w=0, h=0;
+    char* question = new char[questions[type][qNumber]->getQuestion().length()+100];
     strcpy(question, questions[type][qNumber]->getQuestion().c_str());
-    sFont = TTF_RenderUTF8_Blended(font, question, qfcolor);
+    
+    //Question
+    adaptText(font, question, sFont, rect[0], qfcolor, screen);
+    
+    /*sFont = TTF_RenderUTF8_Blended(font, question, qfcolor);
+    SDL_SetColorKey(sFont,SDL_SRCCOLORKEY|¡SDL_RLEACCEL, SDL_MapRGB(sFont->format,255,0,0));
+    SDL_BlitSurface(sFont, NULL, screen, &rect[0]);*/
+    
+    //Answer 1
+    adaptText(font, (char*) questions[type][qNumber]->getAnswer(0).c_str(), sFont, rect[1], afcolor, screen);
+    
+    /*sFont = TTF_RenderUTF8_Blended(font, questions[type][qNumber]->getAnswer(0).c_str(), qfcolor);
     SDL_SetColorKey(sFont,SDL_SRCCOLORKEY|SDL_RLEACCEL, SDL_MapRGB(sFont->format,255,0,0));
-    SDL_BlitSurface(sFont, NULL, screen, &rect[0]);
-    sFont = TTF_RenderUTF8_Blended(font, questions[type][qNumber]->getAnswer(0).c_str(), qfcolor);
+    SDL_BlitSurface(sFont, NULL, screen, &rect[1]);*/
+    
+    adaptText(font, (char*) questions[type][qNumber]->getAnswer(1).c_str(), sFont, rect[2], afcolor, screen);
+    
+    /*sFont = TTF_RenderUTF8_Blended(font, questions[type][qNumber]->getAnswer(1).c_str(), qfcolor);
     SDL_SetColorKey(sFont,SDL_SRCCOLORKEY|SDL_RLEACCEL, SDL_MapRGB(sFont->format,255,0,0));
-    SDL_BlitSurface(sFont, NULL, screen, &rect[1]);
-    sFont = TTF_RenderUTF8_Blended(font, questions[type][qNumber]->getAnswer(1).c_str(), qfcolor);
+    SDL_BlitSurface(sFont, NULL, screen, &rect[2]);*/
+    
+    adaptText(font, (char*) questions[type][qNumber]->getAnswer(2).c_str(), sFont, rect[3], afcolor, screen);
+    /*sFont = TTF_RenderUTF8_Blended(font, questions[type][qNumber]->getAnswer(2).c_str(), qfcolor);
     SDL_SetColorKey(sFont,SDL_SRCCOLORKEY|SDL_RLEACCEL, SDL_MapRGB(sFont->format,255,0,0));
-    SDL_BlitSurface(sFont, NULL, screen, &rect[2]);
-    sFont = TTF_RenderUTF8_Blended(font, questions[type][qNumber]->getAnswer(2).c_str(), qfcolor);
-    SDL_SetColorKey(sFont,SDL_SRCCOLORKEY|SDL_RLEACCEL, SDL_MapRGB(sFont->format,255,0,0));
-    SDL_BlitSurface(sFont, NULL, screen, &rect[3]);
+    SDL_BlitSurface(sFont, NULL, screen, &rect[3]);*/
+    //SDL_FreeSurface(sFont);
 }
 
 QuestionEngine::~QuestionEngine(){
-    //TTF_CloseFont(font);
-    //SDL_FreeSurface(sFont);
+
 }
