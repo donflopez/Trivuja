@@ -21,6 +21,7 @@ public:
     Board(char *path, const SDL_PixelFormat* format);
     void setBoard(char* path);
     void drawCasillas(SDL_Surface *screen);
+    int selectCasilla(int number, SDL_Surface *screen);
 };
 
 #endif

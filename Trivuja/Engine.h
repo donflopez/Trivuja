@@ -23,10 +23,13 @@ private:
     SDL_Surface *alphaSurface;
     SDL_Rect rectangulo, transparent;
     QuestionEngine questions;
+    bool isQuestion;
 public:
     Engine(SDL_Surface *screen);
     void drawScene();
     void drawQuestion(int tQuest, SDL_Surface *screen);
+    void next(SDL_Surface *screen);
+    bool showingQuestion(){return isQuestion;}
     ~Engine();
 };
 

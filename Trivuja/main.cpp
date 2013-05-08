@@ -47,18 +47,26 @@ int main(int argc, char** argv)
     
     eng = new Engine(screen);
     
-    eng->drawQuestion(1, screen);
+    //eng->drawQuestion(1, screen);
     
     atexit(SDL_Quit);
     
     SDL_Flip(screen);
     
+    //eng->next(screen);
+    
     bool isRunning = true;
     
     while (isRunning) {
+        keys = SDL_GetKeyState(NULL);
         while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_KEYDOWN) {
+            if (event.key.keysym.sym == SDLK_ESCAPE) {
                 isRunning = false;
+            }
+            else {
+                if(keys[SDLK_n]&&!eng->showingQuestion()){
+                    eng->next(screen);
+                }
             }
         }
     }
