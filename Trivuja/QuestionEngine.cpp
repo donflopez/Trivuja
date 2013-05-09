@@ -10,6 +10,7 @@
 #include <sstream>
 #include <fstream>
 #include <iostream>
+#include <time.h>
 
 
 QuestionEngine::QuestionEngine(){
@@ -89,7 +90,6 @@ void adaptText(TTF_Font *font,char* text, SDL_Surface *sFont, SDL_Rect rect, SDL
             sFont = TTF_RenderUTF8_Blended(font,(char*) aux.c_str(), color);
             if(i!=0)
                 rect.y=rect.y+(i*h);
-                std::cout << "Altura" << w <<std::endl;
             SDL_SetColorKey(sFont,SDL_SRCCOLORKEY|SDL_RLEACCEL, SDL_MapRGB(sFont->format,255,0,0));
             SDL_BlitSurface(sFont, NULL, screen, &rect);
             SDL_FreeSurface(sFont);
@@ -104,7 +104,8 @@ void adaptText(TTF_Font *font,char* text, SDL_Surface *sFont, SDL_Rect rect, SDL
 }
 
 void QuestionEngine::draw(int type, SDL_Surface *screen){
-    int qNumber = rand()%20, w=0, h=0;
+    srand((unsigned int)time(NULL));
+    int qNumber = rand()%20;
     char* question = new char[questions[type][qNumber]->getQuestion().length()+100];
     strcpy(question, questions[type][qNumber]->getQuestion().c_str());
     
@@ -133,6 +134,39 @@ void QuestionEngine::draw(int type, SDL_Surface *screen){
     SDL_SetColorKey(sFont,SDL_SRCCOLORKEY|SDL_RLEACCEL, SDL_MapRGB(sFont->format,255,0,0));
     SDL_BlitSurface(sFont, NULL, screen, &rect[3]);*/
     //SDL_FreeSurface(sFont);
+    correct = questions[type][qNumber]->getCorrectAns();
+}
+
+bool QuestionEngine::isValid(int answ){
+    if(answ==correct){
+        correct = -1;
+        return true;
+    }
+    else{
+        correct = -1;
+        return false;
+    }
+}
+
+void QuestionEngine::drawResult(bool correct, SDL_Surface *screen){
+    SDL_Color color;
+    color.b=0;
+    if (correct) {
+        color.r=0;
+        color.g=255;
+        sFont = TTF_RenderUTF8_Blended(font,"Correcto!", color);
+        SDL_SetColorKey(sFont,SDL_SRCCOLORKEY|SDL_RLEACCEL, SDL_MapRGB(sFont->format,255,0,0));
+        SDL_BlitSurface(sFont, NULL, screen, &rect[2]);
+        SDL_FreeSurface(sFont);
+    }
+    else{
+        color.r=254;
+        color.g=0;
+        sFont = TTF_RenderUTF8_Blended(font,"Fallaste!", color);
+        SDL_SetColorKey(sFont,SDL_SRCCOLORKEY|SDL_RLEACCEL, SDL_MapRGB(sFont->format,255,0,0));
+        SDL_BlitSurface(sFont, NULL, screen, &rect[2]);
+        SDL_FreeSurface(sFont);
+    }
 }
 
 QuestionEngine::~QuestionEngine(){

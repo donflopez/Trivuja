@@ -32,3 +32,7 @@ string QandA::getQuestion(){
 string QandA::getAnswer(int nAns){
     return answer[nAns];
 }
+
+int QandA::getCorrectAns() {
+    return correctAnswer;
+}

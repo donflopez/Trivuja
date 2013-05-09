@@ -10,6 +10,7 @@
 #include <iostream>
 #include "Engine.h"
 #include "Board.h"
+#include "Dice.h"
 
 Engine::Engine(SDL_Surface *screen):keys(NULL),isQuestion(false){
     b = new Board(screen->format);
@@ -29,11 +30,66 @@ void Engine::drawQuestion(int tQuest, SDL_Surface *screen){
 }
 
 void Engine::next(SDL_Surface *screen){
-    int type = b->selectCasilla(6, screen);
+    Dice dice;
+    int type = b->selectCasilla(dice.pull(), screen);
     std::cout << "Type: " << type << std::endl;
-    this->drawQuestion(type, screen);
-    this->isQuestion=true;
-    SDL_Flip(screen);
+    if (type!=5) {
+        this->drawQuestion(type, screen);
+        this->isQuestion=true;
+        SDL_Flip(screen);
+    }
+    else{
+        this->isQuestion=false;
+    }
+}
+
+void Engine::answer(Uint8* keys, SDL_Surface *screen){
+    if (isQuestion) {
+        if(keys[SDLK_1]){
+            if(questions.isValid(0)){
+                b->draw(screen);
+                b->drawCasillas(screen);
+                SDL_SetAlpha(alphaSurface, SDL_SRCALPHA, 180);
+                SDL_BlitSurface(alphaSurface, NULL, screen, &transparent);
+                questions.drawResult(true, screen);
+                isQuestion=false;
+                SDL_Flip(screen);
+                
+            }
+        }
+        else if(keys[SDLK_2]){
+            if(questions.isValid(1)){
+                b->draw(screen);
+                b->drawCasillas(screen);
+                SDL_SetAlpha(alphaSurface, SDL_SRCALPHA, 180);
+                SDL_BlitSurface(alphaSurface, NULL, screen, &transparent);
+                questions.drawResult(true, screen);
+                isQuestion=false;
+                SDL_Flip(screen);
+            }
+        }
+        else if(keys[SDLK_3]){
+            if(questions.isValid(2)){
+                b->draw(screen);
+                b->drawCasillas(screen);
+                SDL_SetAlpha(alphaSurface, SDL_SRCALPHA, 180);
+                SDL_BlitSurface(alphaSurface, NULL, screen, &transparent);
+                questions.drawResult(true, screen);
+                isQuestion=false;
+                SDL_Flip(screen);
+            }
+        }
+        else{
+            b->draw(screen);
+            b->drawCasillas(screen);
+            SDL_SetAlpha(alphaSurface, SDL_SRCALPHA, 180);
+            SDL_BlitSurface(alphaSurface, NULL, screen, &transparent);
+            questions.drawResult(false, screen);
+            isQuestion=false;
+            SDL_Flip(screen);
+        }
+        
+    }
 }
 
 Engine::~Engine(){

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		22089DCE1732CA95005834D8 /* SDL_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22089DCD1732CA95005834D8 /* SDL_ttf.framework */; };
+		221E8615173BF24300F110B4 /* Dice.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 221E8614173BF24300F110B4 /* Dice.cpp */; };
 		223A3D4B172C27C5007B635E /* QandA.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 223A3D4A172C27C5007B635E /* QandA.cpp */; };
 		223A3D4E172C2F1E007B635E /* QuestionEngine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 223A3D4D172C2F1E007B635E /* QuestionEngine.cpp */; };
 		229099C21713216B00B62419 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 229099C11713216B00B62419 /* main.cpp */; };
@@ -37,6 +38,8 @@
 
 /* Begin PBXFileReference section */
 		22089DCD1732CA95005834D8 /* SDL_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL_ttf.framework; path = ../../../../../../../Library/Frameworks/SDL_ttf.framework; sourceTree = "<group>"; };
+		221E8613173BF19800F110B4 /* Dice.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dice.h; sourceTree = "<group>"; };
+		221E8614173BF24300F110B4 /* Dice.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Dice.cpp; sourceTree = "<group>"; };
 		223A3D49172C27B5007B635E /* QandA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QandA.h; sourceTree = "<group>"; };
 		223A3D4A172C27C5007B635E /* QandA.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QandA.cpp; sourceTree = "<group>"; };
 		223A3D4C172C2C91007B635E /* QuestionEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuestionEngine.h; sourceTree = "<group>"; };
@@ -115,6 +118,8 @@
 				223A3D4C172C2C91007B635E /* QuestionEngine.h */,
 				223A3D4D172C2F1E007B635E /* QuestionEngine.cpp */,
 				22BF586B172DAD620026EB65 /* Casilla.cpp */,
+				221E8613173BF19800F110B4 /* Dice.h */,
+				221E8614173BF24300F110B4 /* Dice.cpp */,
 			);
 			path = Trivuja;
 			sourceTree = "<group>";
@@ -186,6 +191,7 @@
 				223A3D4B172C27C5007B635E /* QandA.cpp in Sources */,
 				223A3D4E172C2F1E007B635E /* QuestionEngine.cpp in Sources */,
 				22BF586C172DAD620026EB65 /* Casilla.cpp in Sources */,
+				221E8615173BF24300F110B4 /* Dice.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

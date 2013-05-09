@@ -67,6 +67,11 @@ int main(int argc, char** argv)
                 if(keys[SDLK_n]&&!eng->showingQuestion()){
                     eng->next(screen);
                 }
+                else{
+                    if (eng->showingQuestion()) {
+                        eng->answer(keys, screen);
+                    }
+                }
             }
         }
     }
