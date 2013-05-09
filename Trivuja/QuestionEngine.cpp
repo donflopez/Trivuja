@@ -105,7 +105,8 @@ void adaptText(TTF_Font *font,char* text, SDL_Surface *sFont, SDL_Rect rect, SDL
 
 void QuestionEngine::draw(int type, SDL_Surface *screen){
     srand((unsigned int)time(NULL));
-    int qNumber = rand()%20;
+    int qNumber = rand()%19;
+    std::cout << "Numero Pregunta: " << qNumber << std::endl;
     char* question = new char[questions[type][qNumber]->getQuestion().length()+100];
     strcpy(question, questions[type][qNumber]->getQuestion().c_str());
     
