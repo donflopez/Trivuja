@@ -47,15 +47,10 @@ int main(int argc, char** argv)
     
     eng = new Engine(screen);
     
-    //eng->drawQuestion(1, screen);
-    
-    eng->showAll();
-    
     atexit(SDL_Quit);
     
     SDL_Flip(screen);
     
-    //eng->next(screen);
     
     bool isRunning = true;
     
@@ -69,12 +64,11 @@ int main(int argc, char** argv)
         }
         
         while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_QUIT) {isRunning=false;}
-            if (event.type == SDL_KEYDOWN || event.type == SDL_JOYBUTTONDOWN) {
-                if (event.key.keysym.sym == SDLK_ESCAPE) {
+            if (event.type == SDL_QUIT)
+                isRunning=false;
+            if (event.type == SDL_KEYDOWN || event.type == SDL_JOYBUTTONDOWN)
+                if (event.key.keysym.sym == SDLK_ESCAPE)
                     isRunning=false;
-                } 
-            } 
         }
     }
     
@@ -84,4 +78,3 @@ int main(int argc, char** argv)
     delete eng;
     return 0;
 }
-

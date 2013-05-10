@@ -54,7 +54,7 @@ void Engine::answer(Uint8* keys, SDL_Surface *screen){
     while (isQuestion) {
         SDL_PollEvent(&event);
         if(event.key.keysym.sym==SDLK_1){
-            cout << "Respuesta 1" << endl;
+            cout << "Respuesta 0" << endl;
             if(questions.isValid(0)){
                 b->draw(screen);
                 b->drawCasillas(screen);
@@ -75,7 +75,7 @@ void Engine::answer(Uint8* keys, SDL_Surface *screen){
             }
         }
         else if(event.key.keysym.sym==SDLK_2){
-            cout << "Respuesta 2" << endl;
+            cout << "Respuesta 1" << endl;
             if(questions.isValid(1)){
                 b->draw(screen);
                 b->drawCasillas(screen);
@@ -96,7 +96,7 @@ void Engine::answer(Uint8* keys, SDL_Surface *screen){
             }
         }
         else if(event.key.keysym.sym==SDLK_3){
-            cout << "Respuesta 3" << endl;
+            cout << "Respuesta 2" << endl;
             if(questions.isValid(2)){
                 b->draw(screen);
                 b->drawCasillas(screen);
