@@ -55,8 +55,18 @@ string QandA::getQuestion(){
  * @param:el numero de respuesta 
  * @pre:nAns(0-2)
  * @post:ninguna
+ * @ret:devuelve la respuesta como cadena de caracteres
  
  */
 string QandA::getAnswer(int nAns){
     return answer[nAns];
+}
+/**@brief:obtiene la respuesta corecta
+ * @param:ninguno
+ * @pre:ninguna
+ * @post:valor devuelto(1-3)
+ * @ret:el numero de respuesta(int)
+ */
+int QandA::getCorrectAns() {
+    return correctAnswer;
 }

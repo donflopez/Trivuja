@@ -26,6 +26,7 @@ public:
     bool isCorrect(int answ);
     string getQuestion();
     string getAnswer(int nAns);
+    int getCorrectAns();
 };
 
 #endif

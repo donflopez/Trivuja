@@ -8,9 +8,9 @@
 
 #include "Board.h"
 
-/**@brief:constructor del tablero que inicializa el tablerro con la ruta dada y las casillas
- * @param:Se le pasa un puntero format(SDL_PixelFormat) para que cargue el tablero a una altura y anchura determinada
- * @pre:ninguno
+/**@brief:constructor del tablero que inicializa el tablerro con la ruta dada y las casillas.Carga el tablero a una altura y achura determinada
+ * @param:const SDL_PixelFormat* format
+ * @pre:ninguno 
  * @post:ninguno
  
  */
@@ -107,5 +107,26 @@ void Board::drawCasillas(SDL_Surface *screen){
     for (int i=0; i<36; i++) {
         casillas[i]->draw(screen);
     }
+}
+
+int Board::selectCasilla(int number, SDL_Surface *screen){
+    int actual=0;
+    for (int j=0; j<36; j++) {
+        if(casillas[j]->isSelected()){
+            actual=j;
+            j=36;
+        }
+    }
+    for (int i=actual; i<36; i++) {
+        if(actual+number>i){
+            casillas[i]->deselect();
+            this->drawCasillas(screen);
+            SDL_Flip(screen);
+            casillas[i+1]->select();
+        }
+        this->drawCasillas(screen);
+        SDL_Flip(screen);
+    }
+    return casillas[actual+number]->getType();
 }
 
