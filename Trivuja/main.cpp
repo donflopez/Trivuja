@@ -28,11 +28,11 @@ Sint32 delaytime;
 
 int main(int argc, char** argv)
 {
-    if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_JOYSTICK) < 0) {
+    if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_JOYSTICK) < 0) {       //inicia las funciones de SDL
         printf("No se pudo iniciar SDL: %s\n",SDL_GetError());
         return 1;
     }
-    screen = SDL_SetVideoMode(640,480,32,SDL_HWSURFACE|SDL_DOUBLEBUF);
+    screen = SDL_SetVideoMode(640,480,32,SDL_HWSURFACE|SDL_DOUBLEBUF); //establece el modo de video
     if (screen == NULL) {
         cout << "No se puede inicializar el modo gráfico: \n" << SDL_GetError();
         return 1; 

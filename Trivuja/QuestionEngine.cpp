@@ -12,7 +12,11 @@
 #include <iostream>
 #include <time.h>
 
-
+/**@brief:constructor de QuestionEngine que 
+ * @param:ninguno
+ * @pre:ninguno
+ * @post:ninguno
+ */
 QuestionEngine::QuestionEngine(){
     //Setting font colors
     //Background
@@ -82,6 +86,11 @@ QuestionEngine::QuestionEngine(){
 //    return questions[type][rand()%20];
 //}
 
+/**@brief:Adapta el texto de las preguntas y respuestas al tamaño de pantalla
+ * @param:la fuente(TTF_font*),texto a escribir(char*),la superfice que ocupa la pregunta(), el color de las letras, y la superfice que sobreescribe(screen)
+ * @pre:ninguno
+ * @post:ninguno
+ */
 void adaptText(TTF_Font *font,char* text, SDL_Surface *sFont, SDL_Rect rect, SDL_Color color, SDL_Surface *screen) {
     int w=0, h=0, nLines=0, nChar=0;
     string s(text), aux;
@@ -108,6 +117,12 @@ void adaptText(TTF_Font *font,char* text, SDL_Surface *sFont, SDL_Rect rect, SDL
     }
 }
 
+
+/**@brief:función que dibuja las preguntas apoyandose en la funcion adaptext
+ * @param:type es el tipo de pregunta(int), y la superficie donde las dibuja
+ * @pre:ninguna
+ * @post:ninguna
+ */
 void QuestionEngine::draw(int type, SDL_Surface *screen){
     srand((unsigned int)time(NULL));
     int qNumber = rand()%19;
@@ -143,7 +158,11 @@ void QuestionEngine::draw(int type, SDL_Surface *screen){
     correct = questions[type][qNumber]->getCorrectAns();
     std::cout << "respuesta correcta " << correct << std::endl;
 }
-
+/**@brief:comprueba si la respuesta marcada es la correcta
+ * @param:answ(int) numero de respuesta
+ * @pre:asnw(1-3)
+ * @post:ninguna
+ */
 bool QuestionEngine::isValid(int answ){
     if(answ==correct){
         correct = -1;
@@ -154,7 +173,11 @@ bool QuestionEngine::isValid(int answ){
         return false;
     }
 }
-
+/**@brief:dibuja el resultado, si la respuesta es correcta muestra correcto en pantalla en color verde y falso en color rojo
+ * @param:correct(bool) que nos dice si es corecta, y la superficie sobre la que dibuja el mensaje
+ * @pre:ninguno
+ * @post:ninguno
+ */
 void QuestionEngine::drawResult(bool correct, SDL_Surface *screen){
     SDL_Color color;
     color.b=0;
@@ -175,7 +198,11 @@ void QuestionEngine::drawResult(bool correct, SDL_Surface *screen){
         SDL_FreeSurface(sFont);
     }
 }
-
+/**@brief:funcion que muestra en la consola, las preguntas(para saber si se cargan bien las preguntas) 
+ * @param:ninguno
+ * @pre:ninguno
+ * @post:ninguno
+ */
 void QuestionEngine::showAllQuestions(){
     for (int i=0; i<5; i++) {
         for (int j=0; j<20; j++) {
@@ -184,6 +211,7 @@ void QuestionEngine::showAllQuestions(){
     }
 }
 
+/**@brief:Destructor de QuestionEngine*/
 QuestionEngine::~QuestionEngine(){
 
 }

@@ -10,6 +10,13 @@
 
 #include "Casilla.h"
 
+
+/**@brief:contructor de las casillas que asigna a cada tipo(0-5) un color, y un rectángulo de 50x50 pixeles
+ * @param:el tipo de casilla(0-5),un puntero format(SDL_PixelFormat) para darr color y las coordenadas de la casilla x e y(int)
+ * @pre:ninguna
+ * @post:ninguna
+ 
+ */
 Casilla::Casilla(int type, const SDL_PixelFormat* format, int x, int y){
     this->type=type;
     selected = 0;
@@ -44,7 +51,12 @@ Casilla::Casilla(int type, const SDL_PixelFormat* format, int x, int y){
     rect.x=x;
     rect.y=y;
 }
-
+/**@brief:dibuja la casilla en una superrfice(screen)
+ * @param:un puntero a la superficie donde la dibujamos(en pantalla) de tipo SDL_Surface
+ * @pre:niguna
+ * @post:ninguna
+ 
+ */
 void Casilla::draw(SDL_Surface *screen){
     SDL_FillRect(screen, &rect, color[selected]);
 }
