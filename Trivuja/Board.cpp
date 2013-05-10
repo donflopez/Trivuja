@@ -8,6 +8,12 @@
 
 #include "Board.h"
 
+/**@brief:constructor del tablero que inicializa el tablerro con la ruta dada y las casillas
+ * @param:Se le pasa un puntero format(SDL_PixelFormat) para que cargue el tablero a una altura y anchura determinada
+ * @pre:ninguno
+ * @post:ninguno
+ 
+ */
 Board::Board(const SDL_PixelFormat* format){
     const char *path= "/Users/donflopez/Downloads/board.bmp";
     brd.load(path);
@@ -65,6 +71,13 @@ Board::Board(const SDL_PixelFormat* format){
     casillas[0]->select();
 }
 
+/**@brief:constructor de Board con casillas
+ * @param:puntero a char(ruta de la imagen) y un puntero format(SDL_PixelFormat)
+ para saber en que pixel cagamos el tablero
+ * @pre:ninguna
+ * @post:ninguna
+ 
+ */
 Board::Board(char *path, const SDL_PixelFormat* format){
     brd.load(path);
     this->addFrame(brd);
@@ -75,10 +88,21 @@ Board::Board(char *path, const SDL_PixelFormat* format){
     }
 }
 
+/**@brief:carga el tablero sin casillas
+ * @param:un puntero a char(ruta de la imagen en bmp)
+ * @pre:ninguna
+ * @post:niguna
+ 
+ */
 void Board::setBoard(char *path){
     brd.load(path);
 }
-
+/**@brief:función que dibuja las casillas encima de la pantalla(el tablero ocupa la pantalla)
+ * @param:un puntero screen(SDL_Surface) que nos dice en que superficie vamos a dibujar las casillas
+ * @pre:ninguna
+ * @post:ninguna
+ 
+ */
 void Board::drawCasillas(SDL_Surface *screen){
     for (int i=0; i<36; i++) {
         casillas[i]->draw(screen);
