@@ -87,10 +87,14 @@ void Board::drawCasillas(SDL_Surface *screen){
 
 int Board::selectCasilla(int number, SDL_Surface *screen){
     int actual=0;
-    for (int i=0; i<36; i++) {
-        if(casillas[i]->isSelected()&&actual+number>i){
-            if(actual==0)
-                actual=i;
+    for (int j=0; j<36; j++) {
+        if(casillas[j]->isSelected()){
+            actual=j;
+            j=36;
+        }
+    }
+    for (int i=actual; i<36; i++) {
+        if(actual+number>i){
             casillas[i]->deselect();
             this->drawCasillas(screen);
             SDL_Flip(screen);

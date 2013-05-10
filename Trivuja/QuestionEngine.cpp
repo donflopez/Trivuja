@@ -28,6 +28,8 @@ QuestionEngine::QuestionEngine(){
     afcolor.g=255;
     afcolor.b=255;
     
+    correct=0;
+    
     for (int i=0; i<4; i++) {
         rect[i].y = 20+(i*100);
         rect[i].x = (i==0) ? 20 : 50;
@@ -40,6 +42,7 @@ QuestionEngine::QuestionEngine(){
     string line, sType;
     string question, answ[3];
     int type, correct, i=0;
+    int counter=1;
     std::cout << "Constructor de QuestionEngine" << std::endl;
     file.open("/Users/Donflopez/Downloads/preguntas.tjData");
     if(file.good()){
@@ -47,18 +50,20 @@ QuestionEngine::QuestionEngine(){
             getline(file,line);
             ss << line;
             getline(ss, sType, ';');
-            iss<<sType;
-            iss>>type;
+            type = atoi(sType.c_str());
+            std::cout << "Type before: " << type << std::endl;
             getline(ss, question, ';');
             getline(ss, answ[0], ';');
             getline(ss, answ[1], ';');
             getline(ss, answ[2], ';');
             getline(ss, sType, ';');
-            iss<<sType;
-            iss>>correct;
+            correct = atoi(sType.c_str());
+            std::cout <<"Type: " << type << "and i: " << i << std::endl;
             questions[type][i] = new QandA(question, answ, correct);
-            std::cout << "Pregunta " << i << " tipo " << type << ":" << questions[type][i]->getQuestion() << std::endl;
-            if (i<20) {
+            std::cout << "Total cargado: " << counter << "%" << std::endl;
+            counter++;
+            //std::cout << "Pregunta " << i << " tipo " << type << ":" << questions[type][i]->getQuestion() << std::endl;
+            if (i<19) {
                 i++;
             }else {
                 i=0;
@@ -106,10 +111,10 @@ void adaptText(TTF_Font *font,char* text, SDL_Surface *sFont, SDL_Rect rect, SDL
 void QuestionEngine::draw(int type, SDL_Surface *screen){
     srand((unsigned int)time(NULL));
     int qNumber = rand()%19;
-    std::cout << "Numero Pregunta: " << qNumber << std::endl;
+    std::cout << "Numero Pregunta: " << qNumber << "y tipo " << type << std::endl;
+    std::cout << "Pregunta: " << questions[type][qNumber]->getQuestion() << std::endl;
     char* question = new char[questions[type][qNumber]->getQuestion().length()+100];
     strcpy(question, questions[type][qNumber]->getQuestion().c_str());
-    
     //Question
     adaptText(font, question, sFont, rect[0], qfcolor, screen);
     
@@ -136,6 +141,7 @@ void QuestionEngine::draw(int type, SDL_Surface *screen){
     SDL_BlitSurface(sFont, NULL, screen, &rect[3]);*/
     //SDL_FreeSurface(sFont);
     correct = questions[type][qNumber]->getCorrectAns();
+    std::cout << "respuesta correcta " << correct << std::endl;
 }
 
 bool QuestionEngine::isValid(int answ){
@@ -167,6 +173,14 @@ void QuestionEngine::drawResult(bool correct, SDL_Surface *screen){
         SDL_SetColorKey(sFont,SDL_SRCCOLORKEY|SDL_RLEACCEL, SDL_MapRGB(sFont->format,255,0,0));
         SDL_BlitSurface(sFont, NULL, screen, &rect[2]);
         SDL_FreeSurface(sFont);
+    }
+}
+
+void QuestionEngine::showAllQuestions(){
+    for (int i=0; i<5; i++) {
+        for (int j=0; j<20; j++) {
+            std::cout << questions[i][j]->getQuestion().c_str() << std::endl;
+        }
     }
 }
 

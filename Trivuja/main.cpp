@@ -49,6 +49,8 @@ int main(int argc, char** argv)
     
     //eng->drawQuestion(1, screen);
     
+    eng->showAll();
+    
     atexit(SDL_Quit);
     
     SDL_Flip(screen);
@@ -59,20 +61,20 @@ int main(int argc, char** argv)
     
     while (isRunning) {
         keys = SDL_GetKeyState(NULL);
+        if(keys[SDLK_n]&&!eng->showingQuestion()){
+            eng->next(screen);
+            eng->answer(keys, screen);
+            sleep(3);
+            eng->drawScene(screen);
+        }
+        
         while (SDL_PollEvent(&event)) {
-            if (event.key.keysym.sym == SDLK_ESCAPE) {
-                isRunning = false;
-            }
-            else {
-                if(keys[SDLK_n]&&!eng->showingQuestion()){
-                    eng->next(screen);
-                }
-                else{
-                    if (eng->showingQuestion()) {
-                        eng->answer(keys, screen);
-                    }
-                }
-            }
+            if (event.type == SDL_QUIT) {isRunning=false;}
+            if (event.type == SDL_KEYDOWN || event.type == SDL_JOYBUTTONDOWN) {
+                if (event.key.keysym.sym == SDLK_ESCAPE) {
+                    isRunning=false;
+                } 
+            } 
         }
     }
     

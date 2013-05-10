@@ -23,6 +23,12 @@ Engine::Engine(SDL_Surface *screen):keys(NULL),isQuestion(false){
     b->drawCasillas(screen);
 }
 
+void Engine::drawScene(SDL_Surface *screen){
+    b->draw(screen);
+    b->drawCasillas(screen);
+    SDL_Flip(screen);
+}
+
 void Engine::drawQuestion(int tQuest, SDL_Surface *screen){
     SDL_SetAlpha(alphaSurface, SDL_SRCALPHA, 180);
     SDL_BlitSurface(alphaSurface, NULL, screen, &transparent);
@@ -44,8 +50,11 @@ void Engine::next(SDL_Surface *screen){
 }
 
 void Engine::answer(Uint8* keys, SDL_Surface *screen){
-    if (isQuestion) {
-        if(keys[SDLK_1]){
+    SDL_Event event;
+    while (isQuestion) {
+        SDL_PollEvent(&event);
+        if(event.key.keysym.sym==SDLK_1){
+            cout << "Respuesta 1" << endl;
             if(questions.isValid(0)){
                 b->draw(screen);
                 b->drawCasillas(screen);
@@ -54,10 +63,19 @@ void Engine::answer(Uint8* keys, SDL_Surface *screen){
                 questions.drawResult(true, screen);
                 isQuestion=false;
                 SDL_Flip(screen);
-                
+            }
+            else{
+                b->draw(screen);
+                b->drawCasillas(screen);
+                SDL_SetAlpha(alphaSurface, SDL_SRCALPHA, 180);
+                SDL_BlitSurface(alphaSurface, NULL, screen, &transparent);
+                questions.drawResult(false, screen);
+                isQuestion=false;
+                SDL_Flip(screen);
             }
         }
-        else if(keys[SDLK_2]){
+        else if(event.key.keysym.sym==SDLK_2){
+            cout << "Respuesta 2" << endl;
             if(questions.isValid(1)){
                 b->draw(screen);
                 b->drawCasillas(screen);
@@ -67,8 +85,18 @@ void Engine::answer(Uint8* keys, SDL_Surface *screen){
                 isQuestion=false;
                 SDL_Flip(screen);
             }
+            else{
+                b->draw(screen);
+                b->drawCasillas(screen);
+                SDL_SetAlpha(alphaSurface, SDL_SRCALPHA, 180);
+                SDL_BlitSurface(alphaSurface, NULL, screen, &transparent);
+                questions.drawResult(false, screen);
+                isQuestion=false;
+                SDL_Flip(screen);
+            }
         }
-        else if(keys[SDLK_3]){
+        else if(event.key.keysym.sym==SDLK_3){
+            cout << "Respuesta 3" << endl;
             if(questions.isValid(2)){
                 b->draw(screen);
                 b->drawCasillas(screen);
@@ -78,18 +106,22 @@ void Engine::answer(Uint8* keys, SDL_Surface *screen){
                 isQuestion=false;
                 SDL_Flip(screen);
             }
-        }
-        else{
-            b->draw(screen);
-            b->drawCasillas(screen);
-            SDL_SetAlpha(alphaSurface, SDL_SRCALPHA, 180);
-            SDL_BlitSurface(alphaSurface, NULL, screen, &transparent);
-            questions.drawResult(false, screen);
-            isQuestion=false;
-            SDL_Flip(screen);
+            else {
+                b->draw(screen);
+                b->drawCasillas(screen);
+                SDL_SetAlpha(alphaSurface, SDL_SRCALPHA, 180);
+                SDL_BlitSurface(alphaSurface, NULL, screen, &transparent);
+                questions.drawResult(false, screen);
+                isQuestion=false;
+                SDL_Flip(screen);
+            }
         }
         
     }
+}
+
+void Engine::showAll(){
+    questions.showAllQuestions();
 }
 
 Engine::~Engine(){

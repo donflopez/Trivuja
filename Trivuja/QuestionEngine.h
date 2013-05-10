@@ -29,6 +29,7 @@ public:
     void draw(int type, SDL_Surface *screen);
     bool isValid(int answ);
     void drawResult(bool correct, SDL_Surface *screen);
+    void showAllQuestions();
     ~QuestionEngine();
 };
 

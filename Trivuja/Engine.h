@@ -27,11 +27,12 @@ private:
     bool isQuestion;
 public:
     Engine(SDL_Surface *screen);
-    void drawScene();
+    void drawScene(SDL_Surface *screen);
     void drawQuestion(int tQuest, SDL_Surface *screen);
     void next(SDL_Surface *screen);
     bool showingQuestion(){return isQuestion;}
     void answer(Uint8* keys, SDL_Surface *screen);
+    void showAll();
     ~Engine();
 };
 
