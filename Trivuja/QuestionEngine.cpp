@@ -95,11 +95,16 @@ void adaptText(TTF_Font *font,char* text, SDL_Surface *sFont, SDL_Rect rect, SDL
     int w=0, h=0, nLines=0, nChar=0;
     string s(text), aux;
     TTF_SizeText(font, text, &w, &h);
+    
     nLines=w/600;
     nLines++;
+    
     if (w>600) {
+        
         nChar=s.length()/nLines;
+        
         for (int i=0; i<nLines; i++) {
+            //Draw all lines
             aux=s.substr(i*nChar, nChar*(i+1));
             sFont = TTF_RenderUTF8_Blended(font,(char*) aux.c_str(), color);
             if(i!=0)
@@ -110,6 +115,7 @@ void adaptText(TTF_Font *font,char* text, SDL_Surface *sFont, SDL_Rect rect, SDL
         }
     }
     else{
+        //Draw a single line
         sFont = TTF_RenderUTF8_Blended(font, text, color);
         SDL_SetColorKey(sFont,SDL_SRCCOLORKEY|SDL_RLEACCEL, SDL_MapRGB(sFont->format,255,0,0));
         SDL_BlitSurface(sFont, NULL, screen, &rect);
@@ -125,38 +131,27 @@ void adaptText(TTF_Font *font,char* text, SDL_Surface *sFont, SDL_Rect rect, SDL
  */
 void QuestionEngine::draw(int type, SDL_Surface *screen){
     srand((unsigned int)time(NULL));
+    
+    //Random question
     int qNumber = rand()%19;
-    std::cout << "Numero Pregunta: " << qNumber << "y tipo " << type << std::endl;
-    std::cout << "Pregunta: " << questions[type][qNumber]->getQuestion() << std::endl;
+
+    
     char* question = new char[questions[type][qNumber]->getQuestion().length()+100];
     strcpy(question, questions[type][qNumber]->getQuestion().c_str());
     //Question
     adaptText(font, question, sFont, rect[0], qfcolor, screen);
     
-    /*sFont = TTF_RenderUTF8_Blended(font, question, qfcolor);
-    SDL_SetColorKey(sFont,SDL_SRCCOLORKEY|¡SDL_RLEACCEL, SDL_MapRGB(sFont->format,255,0,0));
-    SDL_BlitSurface(sFont, NULL, screen, &rect[0]);*/
-    
     //Answer 1
     adaptText(font, (char*) questions[type][qNumber]->getAnswer(0).c_str(), sFont, rect[1], afcolor, screen);
     
-    /*sFont = TTF_RenderUTF8_Blended(font, questions[type][qNumber]->getAnswer(0).c_str(), qfcolor);
-    SDL_SetColorKey(sFont,SDL_SRCCOLORKEY|SDL_RLEACCEL, SDL_MapRGB(sFont->format,255,0,0));
-    SDL_BlitSurface(sFont, NULL, screen, &rect[1]);*/
-    
+    //Answer 2
     adaptText(font, (char*) questions[type][qNumber]->getAnswer(1).c_str(), sFont, rect[2], afcolor, screen);
     
-    /*sFont = TTF_RenderUTF8_Blended(font, questions[type][qNumber]->getAnswer(1).c_str(), qfcolor);
-    SDL_SetColorKey(sFont,SDL_SRCCOLORKEY|SDL_RLEACCEL, SDL_MapRGB(sFont->format,255,0,0));
-    SDL_BlitSurface(sFont, NULL, screen, &rect[2]);*/
-    
+    //Answer 3
     adaptText(font, (char*) questions[type][qNumber]->getAnswer(2).c_str(), sFont, rect[3], afcolor, screen);
-    /*sFont = TTF_RenderUTF8_Blended(font, questions[type][qNumber]->getAnswer(2).c_str(), qfcolor);
-    SDL_SetColorKey(sFont,SDL_SRCCOLORKEY|SDL_RLEACCEL, SDL_MapRGB(sFont->format,255,0,0));
-    SDL_BlitSurface(sFont, NULL, screen, &rect[3]);*/
-    //SDL_FreeSurface(sFont);
+
+    //Set correct
     correct = questions[type][qNumber]->getCorrectAns();
-    std::cout << "respuesta correcta " << correct << std::endl;
 }
 /**@brief:comprueba si la respuesta marcada es la correcta
  * @param:answ(int) numero de respuesta

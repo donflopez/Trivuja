@@ -19,13 +19,10 @@ private:
     SDL_Rect rect[4];
     SDL_Surface *sFont;
     TTF_Font *font;
-    //TODO: Load dinamically QandA
     QandA* questions[5][20];
     int correct;
-    //int latest[2];
 public:
     QuestionEngine();
-//QandA getQuestion(int type);
     void draw(int type, SDL_Surface *screen);
     bool isValid(int answ);
     void drawResult(bool correct, SDL_Surface *screen);
